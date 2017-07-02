@@ -14,31 +14,24 @@
 using namespace std;
 
 class employee{
-private:
-    string name;
-    int id;
-    string postion;
-    int experience;
-    int month;
-    int day;
-    int year;
-    char status;
-    double wage;
-    double clockintime;
-    double clockouttime;
-    string timeoffrequests;
-    
+private: 
+    int id, month, day, year, experience;
+    string name, postion, status;
+    double wage, clockintime, clockouttime;
+   
     public :
-    
-    employee(string name, int experience, char status, string timeoffrequests, int month, int day, int year)
+    employee()
     {
         name = "Bill";
-        experience = 1;
-        status = 'M';
-        timeoffrequests = "Vacation";
-        month = 1;
-        day= 1;
-        year = 1;
+        id = 1;
+        postion = "VP";
+    }
+    employee(string name, string postion, int experience, double wage)
+    {
+        name = "Bill";
+        postion = "VP";
+        experience = 0;
+        wage = 0;
     }
     
     void setexperience(int exp)
@@ -67,7 +60,7 @@ private:
     {
         return status;
     };
-
+    
     void setwage(double newwage)
     {
         newwage = wage;
@@ -114,9 +107,5 @@ private:
         return name;
     }
     
-    string gettimeoffrequests()
-    {
-        return timeoffrequests;
-    }
     
 };

@@ -24,18 +24,75 @@
 #include <fstream>
 #include "Manager.cpp"
 
-vector<employee*> database;
-employee* data[5];
-ofstream outfile("Outfile.txt");
-
 using namespace std;
 
-//manager option
+//functions
+void manageroptions();
+void employeeoptions();
+void addemployee();
+void addmanager();
+void printemployee();
+bool manager();
+void statusofuser();
+void printfile();
+void fireemployee();
+
+int main()
+{
+    
+    //create vector
+    
+    vector<employee*> database;
+    
+    ofstream outfile("Outfile.txt");
+    int size;
+    cout << "Welcome to Northwest Coffee database! " << endl;
+    cout << endl;
+    cout << "How big is the database: " << endl;
+    cin >> size;
+    
+    
+    
+    
+    ///show menu
+    cout << "1) I am a manager. " << endl;
+    cout << "2) I am an employee. " << endl;
+    cout << "3) Add an employee. " << endl;
+    cout << "4) Add a Manager. " << endl;
+    
+    int menuselect = 0;
+    
+    cin >> menuselect;
+
+    
+   
+ 
+    switch (menuselect)
+    {
+        case 1:
+            manageroptions();
+            break;
+        case 2:
+            employeeoptions();
+            break;
+        case 3:
+            addemployee();
+            break;
+        case 4:
+            addmanager();
+            break;
+        default: cout << "Error wrong choice. ";
+    }
+    
+    return 0;
+}
+
+
 
 void manageroptions(){
     int Mselect;
     
-    cout << "1) Print. " << endl;
+    cout << "1) Print data base. " << endl;
     cout << "2) Fire an employee. " << endl;
     cout << "3) Add an employee. " << endl;
     cout << "4) Exit. " << endl;
@@ -44,13 +101,14 @@ void manageroptions(){
     
     switch (Mselect) {
         case 1:
-            //printfile();
+
+            printfile();
             
             break;
         case 2:
-            //employee fire
-            break;
-       
+           
+            fireemployee();
+            
         case 3:
             //leave program
             break;
@@ -73,38 +131,34 @@ void employeeoptions()
     
     switch (Eselect) {
         case 1:
+            
             ///time in
-            
+            //How do i specificly zero in on an employee and put in the time in seconds
             break;
+            
         case 2:
+            
             // time out
-            
+            //// same here.
             break;
+            
         case 3:
             
+            /// How do I search the database for a specific name?
             cout << "Enter name. " << endl;
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            cin >> name;
             
-            
-            for(int l=0;l<database.size();l++)
-            {
-                if(database[l]->getLastName()==search)
-                {
-                    database.erase(database.begin()+l);
-                    break;
-                }
-                
-            }
             break;
         case 3:
+            
             // adding up hours
             
             break;
+            
         case 4:
             //cout hours
             
             break;
+            
         case 5:
             
             break;
@@ -116,8 +170,9 @@ void employeeoptions()
 void addemployee()
 {
     ofstream outfile("Outfile.txt");
-    employee* data[5];
+    vector<employee> databaseE;
     string name, timeoffrequests;
+
     char status;
     int j, experience, month, day, year;
     
@@ -125,98 +180,106 @@ void addemployee()
 				cin >> name;
 				cout<<"\nEnter years of experience with coffee :" << endl;
 				cin>> experience;
-                cout << "Enter gender. (M or F) " << endl;
-                cin >> status;
+    cout << "Enter gender. (M or F) " << endl;
+    cin >> status;
     
 				cout<<"\nEnter time off requests. ";
 				cin>>timeoffrequests;
     
-                cout << "Enter the month. " << endl;
-                cin >> month;
-                cout << "Enter the day. " << endl;
-                cin >> day;
-                cout << "Enter the year. " << endl;
-                cin >> year;
-    
-				data[j]=new employee(name, experience, status, timeoffrequests, month, day, year);
-        data.push_back (new employee((name, experience, status, timeoffrequests, month, day, year)));
-                data[j]->save("outFile.txt");
-				j++;
-                                             
-
-void addmanager()
-{
-    ofstream outfile("Outfile.txt");
-    employee* data[5];
-    string name, timeoffrequests;
-    char status;
-    double salary;
-    int j, experience, month, day, year;
-    
-                cout<<"\nEnter first name:";
-				cin >> name;
-				cout<<"\nEnter years of experience with coffee :" << endl;
-				cin>> experience;
-                cout << "Enter gender. (M or F) " << endl;
-                cin >> status;
-                cout << " Salary set: "
-                cin >> salary;
-				cout<<"\nEnter time off requests. ";
-				cin>>timeoffrequests;
-    
-                cout << "Enter the month. " << endl;
-                cin >> month;
-                cout << "Enter the day. " << endl;
-                cin >> day;
-                cout << "Enter the year. " << endl;
-                cin >> year;
-    
-        data[j]=new Manager(name, age, salary, meetingsamonth, status, day, month, year);
-        data.push_back (new employee((name, status, month, day, year, )));
-        data[j]->save("outFile.txt");
-				j++;
-}
-
-int main()
-{
-    
-    //create vector
-    
-    vector<employee*> database;
-    employee* data[5];
-    ofstream outfile("Outfile.txt");
-    
-    cout << "Welcome to Northwest Coffee database! " << endl;
-    cout << endl;
-    cout << "How big is the database: " << endl;
-    cin >> data.size();
+    cout << "Enter the month. " << endl;
+    cin >> month;
+    cout << "Enter the day. " << endl;
+    cin >> day;
+    cout << "Enter the year. " << endl;
+    cin >> year;
     
     
-    ///show menu
-    cout << "1) I am a manager. " << endl;
-    cout << "2) I am an employee. " << endl;
-    cout << "3) Add an employee. " << endl;
-    cout << "4) Add a Manager. " << endl;
-  
-    //manager options
-    int menuselect;
     
-    switch (menuselect)
+    ////CHAd I dont know how to save a new employee to the outfile.txT!!!!
+    
+    //SAME with the manager fucntion
+    
+    
+    
+    data[j] = new employee(name, experience, status, timeoffrequests, month, day, year);
+    databaseE.push_back(new employee(name, experience,status,timeoffrequests,month,day,year));
+    data[j]->save("outFile.txt");
+    j++;
+    
+    
+    void addmanager()
     {
-            case 1:
-             manageroptions();
-            break;
-            case 2:
-             employeeoptions();
-            break;
-            case 3:
-             addemployee();
-            break;
-            case 4:
-             addmanager();
-            break;
-                    default: cout << "Error wrong choice. ";
+        ofstream outfile("Outfile.txt");
+        vector<manager> databaseM;
+        string name, timeoffrequests;
+        char status;
+        double salary;
+        int j, experience, month, day, year;
+        
+        cout<<"\nEnter first name:";
+        cin >> name;
+        cout<<"\nEnter years of experience with coffee :" << endl;
+        cin>> experience;
+        cout << "Enter gender. (M or F) " << endl;
+        cin >> status;
+        cout << " Salary set: "
+        cin >> salary;
+        cout<<"\nEnter time off requests. ";
+        cin>>timeoffrequests;
+        
+        cout << "Enter the month. " << endl;
+        cin >> month;
+        cout << "Enter the day. " << endl;
+        cin >> day;
+        cout << "Enter the year. " << endl;
+        cin >> year;
+        
+        data[j]=new Manager(name, age, salary, meetingsamonth, status, day, month, year);
+        databaseM.push_back (new manager(name, status, month, day, year, ));
+        databaseM->save("outFile.txt");
+        j++;
     }
     
-        return 0;
-}}
+void statusofuser()
+{
+    
+    cout << "Type //Manager or //Employee. " << endl;
+    cin >> postion;
+    if (postion == "manager")
+    {
+        if (manager() = true);
+        {
+        manageroptions();
+        }
+    }
+    else
+        cout << "Wrong password. You are allowed employee axcess. " << endl;
+        employeeoptions();
+    
+}
+
+
+bool manager()
+{
+    string password;
+    cout << "Enter password. " << endl;
+    cin >> password;
+    if (password == "northwest")
+    {
+        return true;
+    }
+    else
+        return false;
+}
+
+void printfile()
+{
+    for (
+    cout <<
+   databaseE
+    
+}
+void fireemployee()
+    {
+        
+    }
