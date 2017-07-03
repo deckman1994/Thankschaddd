@@ -18,9 +18,9 @@ private:
     string name;
     int age;
     double salary;
-    int meetingsamonth;
+    int experience, day, month, year, id;
     char status;
-    int day, month, year;
+    
     
 public:
     manager();
@@ -29,14 +29,52 @@ public:
         name = "";
         age = 0;
         salary = 1;
-        meetingsamonth = 0;
-        status = 'M';
-        day= 0;
-        month = 0;
-        year = 0;
+        id = 0;
     }
-    //HOW do I set wages with a class in a class?
-    void setwages();
-    
+void setid(int newid)
+    {
+        newid = id;
+    }
+    void setname(string newname)
+    {
+        newname = name;
+    }
+    void setsalary(double newsalary)
+    {
+        newsalary = salary;
+    }
+    void setexperience(int newexperience)
+    {
+        newexperience = experience;
+    }
+    void setstatus(char newstatus)
+    {
+        newstatus = status;
+    }
+    void sethireddate(int m, int d, int y)
+    {
+        m = month;
+        d = day;
+        y = year;
+    }
+    int getid()
+    {
+        return id;
+    }
+    string getname(){
+        return name;
+    }
+    double getsalary()
+    {
+        return salary;
+    }
+    int getexperience()
+    {
+        return experience;
+    }
+    void hireddate()
+    {
+        cout << month << " - " << day << " - "<< year << endl;
+    }
     
 };

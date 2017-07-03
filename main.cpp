@@ -42,14 +42,12 @@ int main()
     
     //create vector
     
-    vector<employee*> database;
+    vector<employee> database;
     
-    ofstream outfile("Outfile.txt");
-    int size;
+    ofstream outfile;
+    
     cout << "Welcome to Northwest Coffee database! " << endl;
     cout << endl;
-    cout << "How big is the database: " << endl;
-    cin >> size;
     
     
     
@@ -57,8 +55,6 @@ int main()
     ///show menu
     cout << "1) I am a manager. " << endl;
     cout << "2) I am an employee. " << endl;
-    cout << "3) Add an employee. " << endl;
-    cout << "4) Add a Manager. " << endl;
     
     int menuselect = 0;
     
@@ -75,12 +71,7 @@ int main()
         case 2:
             employeeoptions();
             break;
-        case 3:
-            addemployee();
-            break;
-        case 4:
-            addmanager();
-            break;
+            
         default: cout << "Error wrong choice. ";
     }
     
@@ -110,7 +101,7 @@ void manageroptions(){
             fireemployee();
             
         case 3:
-            //leave program
+            addemployee();
             break;
         default: cout << "Wrong option. " << endl;
             break;
@@ -119,82 +110,55 @@ void manageroptions(){
 
 void employeeoptions()
 {
-    //employee options
-    int Eselect;
+    ofstream outfile ("Northwest.txt") ;
+    string searchname;
+    cout << "What is your name: " << endl;
     
-    cout << "1) Time in. " << endl;
-    cout << "2) Time out" << endl;
-    cout << "3) Time off requests. " << endl;
-    cout << "4) Hours currently. " <<endl;
-    cout << "5) Exit. " << endl;
-    cin >> Eselect;
+    cin >> searchname;
     
-    switch (Eselect) {
-        case 1:
-            
-            ///time in
-            //How do i specificly zero in on an employee and put in the time in seconds
-            break;
-            
-        case 2:
-            
-            // time out
-            //// same here.
-            break;
-            
-        case 3:
-            
-            /// How do I search the database for a specific name?
-            cout << "Enter name. " << endl;
-            
-            break;
-        case 3:
-            
-            // adding up hours
-            
-            break;
-            
-        case 4:
-            //cout hours
-            
-            break;
-            
-        case 5:
-            
-            break;
-            
-        default: cout << "Wrong option! Sorry. " << endl;
-            break;
-    }}
+   if (databaseE)
 
+    
+
+}
 void addemployee()
 {
     ofstream outfile("Outfile.txt");
     vector<employee> databaseE;
     string name, timeoffrequests;
-
     char status;
-    int j, experience, month, day, year;
-    
-				cout<<"\nEnter first name:";
-				cin >> name;
-				cout<<"\nEnter years of experience with coffee :" << endl;
-				cin>> experience;
-    cout << "Enter gender. (M or F) " << endl;
-    cin >> status;
-    
-				cout<<"\nEnter time off requests. ";
-				cin>>timeoffrequests;
-    
-    cout << "Enter the month. " << endl;
-    cin >> month;
-    cout << "Enter the day. " << endl;
-    cin >> day;
-    cout << "Enter the year. " << endl;
-    cin >> year;
-    
-    
-    
+
+    int adding, experience;
+    int experience, month, day, year;
+    cout << "How many employees are you adding? " << endl;
+    cin >> adding;
+    employee* one;
+    one = new employee();
+    for (int k = 0; k < adding; k++)
+    {
+       
+        cout << "What is the name of employee "<< k << endl;
+            cin >> name;
+        one->setname(name);
+            cout<<"\nEnter years of experience with coffee :" << endl;
+            cin>> experience;
+        one->setexperience(experience);
+            cout << "Enter gender. (M or F) " << endl;
+            cin >> status;
+        one->setstatus(status);
+            cout << "Enter the month. " << endl;
+            cin >> month;
+            cout << "Enter the day. " << endl;
+            cin >> day;
+            cout << "Enter the year. " << endl;
+            cin >> year;
+        one->sethireddate(month, day, year);
+        one->setid(k);
+        databaseE.push_back(one);
+    }
+}
+
+
     ////CHAd I dont know how to save a new employee to the outfile.txT!!!!
     
     //SAME with the manager fucntion
@@ -215,24 +179,35 @@ void addemployee()
         char status;
         double salary;
         int j, experience, month, day, year;
-        
-        cout<<"\nEnter first name:";
+        manager boss;
+        boss = new manager();
+        for (int k = 0; k < adding; k++)
+        {
+        cout<<"Enter first name for employee" << k << endl;;
         cin >> name;
+            boss-> setname(name);
+            
         cout<<"\nEnter years of experience with coffee :" << endl;
         cin>> experience;
+            boss-> setexperience(experience);
         cout << "Enter gender. (M or F) " << endl;
         cin >> status;
+            boss-> setstatus(status);
         cout << " Salary set: "
         cin >> salary;
-        cout<<"\nEnter time off requests. ";
-        cin>>timeoffrequests;
-        
+            boss-> setsalary(salary);
+            
         cout << "Enter the month. " << endl;
         cin >> month;
         cout << "Enter the day. " << endl;
         cin >> day;
         cout << "Enter the year. " << endl;
         cin >> year;
+            boss-> sethireddate(month, day, year);
+            
+            boss -> setid(k);
+            
+        }
         
         data[j]=new Manager(name, age, salary, meetingsamonth, status, day, month, year);
         databaseM.push_back (new manager(name, status, month, day, year, ));
